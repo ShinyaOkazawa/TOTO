@@ -80,14 +80,12 @@
   </v-row>
 </template>
 
-<script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+<script lang="ts">
+import { defineComponent } from '@nuxtjs/composition-api'
 
-export default {
-  components: {
-    Logo,
-    VuetifyLogo,
+export default defineComponent({
+  setup() {
+    // ここにリアクティブなデータ、関数を定義
   },
-}
+})
 </script>
