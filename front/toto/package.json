@@ -13,6 +13,7 @@
     "test": "jest"
   },
   "lint-staged": {
+    "*": "git secrets --scan",
     "*.{js,vue}": "eslint",
     "*.{css,vue}": "stylelint"
   },
