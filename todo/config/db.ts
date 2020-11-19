@@ -11,7 +11,6 @@ export class DatabaseConnection {
     const client = new MongoClient();
     client.connectWithUri(this.url);
     this.client = client;
-
   }
   public getDatabase() {
     return this.client.database(this.dbName);
@@ -22,6 +21,4 @@ const dbName = "toto";
 const dbHostUrl = "mongodb://root:example@mongo:27017";
 const db = new DatabaseConnection(dbName, dbHostUrl);
 db.connect();
-export { 
-  db
-}
+export { db };
