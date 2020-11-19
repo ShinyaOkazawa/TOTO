@@ -1,19 +1,32 @@
 version: '3'
 
 services:
-  front:
-    image: node:15.2.0-alpine3.12
-    ports:
-      - "8000:8000"
-    volumes:
-      - ../front:/app
-    tty: true
+#   front:
+#     image: node:15.2.0-alpine3.12
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - ../front:/app
+#     tty: true
   todo:
     image: hayd/alpine-deno
     ports:
       - "2020:2020"
     volumes:
       - ../todo:/app
+    depends_on:
+      - mongo
+    working_dir: /app
+    entrypoint:
+      - deno
+      - run
+      - --allow-net
+      - --allow-write
+      - --allow-read
+      - --allow-plugin
+      - --allow-env
+      - --unstable
+      - server/server.ts
   mongo:
     image: mongo
     ports:
@@ -27,6 +40,8 @@ services:
       - ./mongo/configdb:/data/configdb
   mongo-express:
     image: mongo-express
+    depends_on:
+      - mongo
     restart: always
     ports:
       - 8081:8081
