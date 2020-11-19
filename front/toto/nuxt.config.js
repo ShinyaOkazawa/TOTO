@@ -61,6 +61,10 @@ export default {
     },
   },
 
+  storybook: {
+    addons: ['@storybook/addon-knobs'],
+  },
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
 }
